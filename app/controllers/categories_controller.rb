@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
+  before_action :require_admin, except: [:index, :show]
   
   expose(:categories)
   expose(:category)
@@ -38,6 +39,13 @@ class CategoriesController < ApplicationController
   def destroy
     category.destroy
     redirect_to categories_url, notice: 'Category was successfully destroyed.'
+  end
+
+  def require_admin
+    unless current_user.admin?
+      redirect_to new_user_session_path
+      flash[:error] = 'Only admin can add, edit and destroy categories.'
+    end
   end
 
   private
