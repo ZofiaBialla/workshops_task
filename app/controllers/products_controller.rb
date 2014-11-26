@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :require_owner, only: [:edit, :update]
   expose(:category)
   expose(:products)
   expose(:product)
@@ -40,6 +42,13 @@ class ProductsController < ApplicationController
   def destroy
     product.destroy
     redirect_to category_url(product.category), notice: 'Product was successfully destroyed.'
+  end
+
+  def require_owner
+    unless current_user == self.product.user
+      redirect_to category_product_url(category, product)
+      flash[:error] = 'You are not allowed to edit this product.'
+    end
   end
 
   private
