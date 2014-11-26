@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.8'
 
-gem 'pg'
+gem 'pg', '~> 0.18.0.pre20141117110243'
 gem 'draper'
 gem 'decent_exposure'
 gem 'decent_decoration'
@@ -19,6 +19,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'travis'
 gem 'ffaker'
 gem 'konf'
+gem 'tzinfo-data'
 
 group :development do
   gem 'spring'
