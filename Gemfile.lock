@@ -9,7 +9,7 @@ GIT
       sprockets-rails (>= 2.0, < 4.0)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.1.8)
       actionpack (= 4.1.8)
@@ -93,6 +93,7 @@ GEM
       multi_json (~> 1.0)
       net-http-persistent (>= 2.7)
       net-http-pipeline
+    gravatar_image_tag (1.2.0)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -238,6 +239,7 @@ DEPENDENCIES
   draper
   factory_girl_rails
   ffaker
+  gravatar_image_tag
   haml-rails
   jquery-rails
   konf

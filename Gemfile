@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '4.1.8'
 
@@ -7,6 +7,7 @@ gem 'draper'
 gem 'decent_exposure'
 gem 'decent_decoration'
 gem 'devise'
+gem 'gravatar_image_tag'
 gem 'simple_form', '~> 3.1.0rc'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'haml-rails'
