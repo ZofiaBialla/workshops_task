@@ -17,7 +17,7 @@
 
   - current_user.reviews.last(5).each do |review|
     .well
-      %p For #{review.product.title}
+      %p= link_to review.product.title, category_product_path(review.product.category, review.product)
       %em #{review.content},
       %b rating: #{review.rating}
       %p - written at #{review.created_at.strftime("%d/%m/%y") }
