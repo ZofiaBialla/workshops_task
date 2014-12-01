@@ -1,0 +1,7 @@
+-if defined?(categories)
+  %ol.breadcrumb
+    %li= link_to_unless_current 'Categories', root_path
+    -if category.id?
+      %li= link_to_unless_current category.name, category_path(category)
+    -if product.id?
+      %li= product.title
