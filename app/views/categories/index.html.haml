@@ -1,13 +1,14 @@
 .row
   - categories.each do |category|
     .col-sm-6.col-md-4
-      .thumbnail
-        = link_to image_tag(category.pictureurl), category
-        .caption
-          %h3= category.name
-          -if user_signed_in? && current_user.admin?
-            %b= link_to 'Edit', edit_category_path(category) 
-            %b= link_to '| Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+      = link_to category do
+        .thumbnail
+          = image_tag category.pictureurl 
+          .caption
+            %h3= category.name
+            -if user_signed_in? && current_user.admin?
+              %b= link_to 'Edit', edit_category_path(category) 
+              %b= link_to '| Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
 
 -if user_signed_in? && current_user.admin?
   = link_to 'New Category', new_category_path
