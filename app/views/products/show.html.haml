@@ -11,4 +11,7 @@
 
 = render reviews
 
-= link_to "Add new review", new_category_product_review_path(category, product), class: "btn btn-primary"
+- if user_signed_in?
+  = link_to "Add new review", new_category_product_review_path(category, product), class: "btn btn-primary" 
+- else
+  %p Sign in to add reviews
