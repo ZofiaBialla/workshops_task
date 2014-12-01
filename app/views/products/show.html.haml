@@ -1,25 +1,14 @@
-%p#notice= notice
-%p#error= flash[:error]
+.row
+  .col-md-8
+    %h3= product.title
+    %p Price:  #{product.price} | Average Rating #{product.average_rating}
+    %p= product.description
+    - if user_signed_in? && product.user==current_user
+      = link_to 'Edit Product', edit_category_product_path(category.id, product.id)
 
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
-
-%p
-  %b Category
-  = product.category.name
 
 %h3 Reviews
-= render 'reviews/form'
 
 = render reviews
 
-= link_to 'Edit', edit_category_product_path(category.id, product.id)
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+= link_to "Add new review", new_category_product_review_path(category, product), class: "btn btn-primary"
