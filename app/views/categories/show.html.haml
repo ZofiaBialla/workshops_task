@@ -1,17 +1,22 @@
-%p#notice= notice
+%h3= category.name
 
-%p
-  %b Name:
-  = category.name
+%table.table
+  %tr
+    %th Product
+    %th Description
+    %th Price
+    %th Avg rating
+    %th
+    %th
 
-%p
-  - category.products.each do |product|
-    = product.title
+    - category.products.each do |product|
+      %tr
+        %td= link_to "#{product.title}", category_product_path(category, product)
+        %td= product.description.truncate(20)
+        %td $ #{product.price}
+        %td= product.average_rating
+        %td= link_to 'Edit product', edit_category_product_path(category, product) if user_signed_in? && product.user==current_user
+        %td= link_to "delete", category_product_url(category, product), method: :delete, data: { confirm: 'Are you sure?' } if user_signed_in? && product.user==current_user
 
-%p
-  %h3 New product
-  = render 'products/form'
-
-= link_to 'Edit', edit_category_path(category)
-\|
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+- if user_signed_in?
+  = link_to "Add new product", new_category_product_path(category), class: "btn btn-primary"
