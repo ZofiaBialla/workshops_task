@@ -13,4 +13,11 @@
 
 - if current_user.reviews.count > 0
   %hr
-  %h3 Latest Reviews:
+  %h3 Your Latest Reviews:
+
+  - current_user.reviews.last(5).each do |review|
+    .well
+      %p For #{review.product.title}
+      %em #{review.content},
+      %b rating: #{review.rating}
+      %p - written at #{review.created_at.strftime("%d/%m/%y") }
