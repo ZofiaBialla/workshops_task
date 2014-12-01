@@ -5,11 +5,12 @@
       %ul
         - category.errors.full_messages.each do |msg|
           %li= msg
+          
+  .box.panel.panel-default.panel-body
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+      = f.label :pictureurl
+      = f.text_field :pictureurl, class: 'form-control'
 
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
-    = f.label :pictureurl
-    = f.text_field :pictureurl, class: 'form-control'
-
-  = f.submit 'Save', class: 'btn btn-primary'
+    = f.submit 'Save', class: 'btn btn-primary'
