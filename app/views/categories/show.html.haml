@@ -3,7 +3,7 @@
 
 .row
   .col-md-4
-    = image_tag category.pictureurl 
+    = image_tag category.pictureurl, class: "img"
     -if user_signed_in? && current_user.admin?
       %hr
       %p= link_to 'edit category', edit_category_path(category), class: "btn btn-default"
@@ -23,7 +23,7 @@
         - category.products.each do |product|
           %tr
             %td= link_to "#{product.title}", category_product_path(category, product)
-            %td= product.description.truncate(20)
+            %td= product.description.truncate(50)
             %td $ #{product.price}
             %td= product.average_rating
             %td= link_to 'Edit product', edit_category_product_path(category, product) if user_signed_in? && product.user==current_user

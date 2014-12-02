@@ -1,11 +1,13 @@
 %h1= product.title
 %hr
 .row
-  .col-md-6
+  .col-md-8.text-justify
     %p= product.description
-  .col-md-6
-    %p Price: $ #{product.price} 
-    %p Average Rating #{product.average_rating}
+  .col-md-4
+    %p 
+      %b Price: $ #{product.price} 
+    %p 
+      %b Average Rating: #{product.average_rating}
     
 - if user_signed_in? && product.user==current_user
   = link_to 'Edit Product', edit_category_product_path(category.id, product.id)
