@@ -1,4 +1,6 @@
 .well
-  %em #{review.content},
-  %b rating: #{review.rating}
+  %p
+    %em #{review.content},
+  %p
+    %b.rating rating: #{review.rating}
   %p - written by #{review.author}, #{review.written_at}
