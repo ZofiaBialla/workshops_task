@@ -5,7 +5,7 @@
         .thumbnail.clickable
           = image_tag category.pictureurl, class: "img"
           .caption
-            %h3= category.name
+            %h3 #{category.name} (#{category.products.count}) 
             -if user_signed_in? && current_user.admin?
               %hr
               .row
