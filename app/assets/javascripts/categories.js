@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 $(document).ready(function(){
 
-  $('.thumbnail').hover(
+  $('.clickable').hover(
     function(){
         $(this).addClass('active');
     
