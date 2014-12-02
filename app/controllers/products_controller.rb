@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
     self.product.user=current_user
     if product.save
       category.products << product
-      redirect_to category_url(category), notice: 'Product was successfully created.'
+      redirect_to category_product_url(category, product), notice: 'Product was successfully created.'
     else
       render action: 'new'
     end
