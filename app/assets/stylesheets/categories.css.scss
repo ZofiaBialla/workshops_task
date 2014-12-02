@@ -1,7 +1,15 @@
 .thumbnail {
   box-shadow: 4px 5px 10px 0px rgba(0,0,0,0.5);
+  .img {
+  height: 200px;
+  }
 }
+
 .active {
   background-color: rgb(236, 236, 236);
   text-decoration: none;
+}
+
+.img {
+  height: 200px;
 }
