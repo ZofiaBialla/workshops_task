@@ -1,22 +1,32 @@
-%h3= category.name
+%h1= category.name
+%hr
 
-%table.table
-  %tr
-    %th Product
-    %th Description
-    %th Price
-    %th Avg rating
-    %th
-    %th
+.row
+  .col-md-4
+    = image_tag category.pictureurl 
+    -if user_signed_in? && current_user.admin?
+      %hr
+      %p= link_to 'edit category', edit_category_path(category), class: "btn btn-default"
+      %p= link_to ' delete category', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
+      %p= link_to "Add new product", new_category_product_path(category), class: "btn btn-primary"
 
-    - category.products.each do |product|
+  .col-md-8
+    %table.table
       %tr
-        %td= link_to "#{product.title}", category_product_path(category, product)
-        %td= product.description.truncate(20)
-        %td $ #{product.price}
-        %td= product.average_rating
-        %td= link_to 'Edit product', edit_category_product_path(category, product) if user_signed_in? && product.user==current_user
-        %td= link_to "delete", category_product_url(category, product), method: :delete, data: { confirm: 'Are you sure?' } if user_signed_in? && product.user==current_user
+        %th Products
+        %th Description
+        %th Price
+        %th Avg rating
+        %th
+        %th
 
-- if user_signed_in?
-  = link_to "Add new product", new_category_product_path(category), class: "btn btn-primary"
+        - category.products.each do |product|
+          %tr
+            %td= link_to "#{product.title}", category_product_path(category, product)
+            %td= product.description.truncate(20)
+            %td $ #{product.price}
+            %td= product.average_rating
+            %td= link_to 'Edit product', edit_category_product_path(category, product) if user_signed_in? && product.user==current_user
+            %td= link_to "delete", category_product_url(category, product), method: :delete, data: { confirm: 'Are you sure?' } if user_signed_in? && product.user==current_user
+
+    
