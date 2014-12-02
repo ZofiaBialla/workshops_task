@@ -4,16 +4,13 @@
       = link_to category do
         .thumbnail.clickable
           = image_tag category.pictureurl, class: "img"
-          .caption
+          .caption.text-center
             %h3 #{category.name} (#{category.products.count}) 
             -if user_signed_in? && current_user.admin?
               %hr
-              .row
-                .col-xs-4
-                .col-xs-8
-                  %b= link_to 'edit category', edit_category_path(category)
-                  \|
-                  %b= link_to ' delete category', category, method: :delete, data: { confirm: 'Are you sure?' }
+                %b= link_to 'edit category', edit_category_path(category)
+                \|
+                %b= link_to ' delete category', category, method: :delete, data: { confirm: 'Are you sure?' }
 
 -if user_signed_in? && current_user.admin?
   = link_to 'New Category', new_category_path
