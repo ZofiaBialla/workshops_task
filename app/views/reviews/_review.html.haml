@@ -1,5 +1,4 @@
-.col-sm-6.col-md-4
-  .well
-    %em #{review.content},
-    %b rating: #{review.rating}
-    %p - #{review.author}
+.well
+  %em #{review.content},
+  %b rating: #{review.rating}
+  %p - written by #{review.author}, #{review.written_at}
