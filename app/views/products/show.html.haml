@@ -1,15 +1,22 @@
+%h1= product.title
+%hr
 .row
-  .col-md-8
-    %h3= product.title
-    %p Price:  #{product.price} | Average Rating #{product.average_rating}
+  .col-md-6
     %p= product.description
-    - if user_signed_in? && product.user==current_user
-      = link_to 'Edit Product', edit_category_product_path(category.id, product.id)
+  .col-md-6
+    %p Price: $ #{product.price} 
+    %p Average Rating #{product.average_rating}
+    
+- if user_signed_in? && product.user==current_user
+  = link_to 'Edit Product', edit_category_product_path(category.id, product.id)
 
-
+%hr
 %h3 Reviews
 
-= render reviews
+-if product.reviews.count > 0
+  = render reviews
+-else
+  No reviews yet
 
 - if user_signed_in?
   = link_to "Add new review", new_category_product_review_path(category, product), class: "btn btn-primary" 

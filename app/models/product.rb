@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
     if self.reviews.size > 0
    		self.reviews.average(:rating) 
    	else
-        "no ratings yet"
+        "none"
     end
   end
 
