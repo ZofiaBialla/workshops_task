@@ -9,6 +9,7 @@
     %p 
       %b Last name: #{current_user.lastname}
     %p Email: #{current_user.email}
+    %p= "Admin" if current_user.admin?
     %p= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary"
 
 - if current_user.reviews.count > 0
