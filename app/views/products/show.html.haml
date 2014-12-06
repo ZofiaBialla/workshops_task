@@ -11,6 +11,8 @@
     
 - if user_signed_in? && product.user==current_user
   = link_to 'Edit Product', edit_category_product_path(category.id, product.id)
+  \|
+  = link_to "delete", category_product_url(category, product), method: :delete, data: { confirm: 'Are you sure?' }
 
 %hr
 %h3 Reviews

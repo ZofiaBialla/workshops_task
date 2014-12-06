@@ -22,7 +22,7 @@
 
         - category.products.each do |product|
           %tr
-            %td= link_to "#{product.title}", category_product_path(category, product)
+            %td= link_to product.title, category_product_path(category, product)
             %td= product.description.truncate(50)
             %td $ #{product.price}
             %td= product.average_rating
