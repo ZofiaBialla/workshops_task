@@ -1,0 +1,17 @@
+%table.table
+  %tr
+    %th Products
+    %th Description
+    %th Price
+    %th Avg rating
+    %th
+    %th
+
+    - category.products.each do |product|
+      %tr
+        %td= link_to product.title, category_product_path(category, product)
+        %td= product.description.truncate(50)
+        %td $ #{product.price}
+        %td= product.average_rating
+        %td= link_to 'Edit product', edit_category_product_path(category, product) if user_signed_in? && product.user==current_user
+        %td= link_to "delete", category_product_url(category, product), method: :delete, data: { confirm: 'Are you sure?' } if user_signed_in? && product.user==current_user
